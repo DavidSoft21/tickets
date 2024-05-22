@@ -1,0 +1,47 @@
+<h1 class="text-center">Tickets</h1>
+<div class="card text-center">
+  <div class="d-flex justify-content-end d-block">
+    <a class="btn btn-primary btn-md" routerLink="/ticket-store">new</a>
+  </div>
+  <div class="card-header">Tickets</div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">DEADLINE</th>
+            <th scope="col">ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let ticket of tickets; let iControl = index"
+          >
+            <th scope="row">{{ ticket.id }}</th>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.deadline }}</td>
+            <td>
+              <div class="d-flex">
+                <a
+                  [routerLink]="['/ticket-edit', ticket.id]"
+                  class="btn btn-warning"
+                  >edit</a
+                >
+                <a
+                  class="btn btn-danger"
+                  (click)="deleteTicket(ticket.id, iControl)"
+                  >delete</a
+                >
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

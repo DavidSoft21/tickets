@@ -1,0 +1,131 @@
+<section class="row py-5">
+  <div class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="text-center my-2">Create Ticket</h2>
+        <!-- Errors -->
+        <div *ngIf="errors?.title" class="alert alert-danger" role="alert">
+          {{ errors.title }}
+        </div>
+
+        <div
+          *ngIf="errors?.user_id"
+          class="alert alert-danger"
+          role="alert"
+        >
+          {{ errors.user_id }}
+        </div>
+
+        <div
+          *ngIf="errors?.deadline"
+          class="alert alert-danger"
+          role="alert"
+        >
+          {{ errors.deadline }}
+        </div>
+
+        <div *ngIf="errors?.status_id" class="alert alert-danger" role="alert">
+          {{ errors.status_id }}
+        </div>
+
+        <div *ngIf="errors?.message" class="alert alert-danger" role="alert">
+          {{ errors }}
+        </div>
+
+        <!-- Store Ticket Form -->
+        <form [formGroup]="createForm" (ngSubmit)="createTicket()">
+          <!-- Input Title -->
+          <div class="mb-3">
+            <label for="inputTitle" class="form-label"
+              >Title</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="inputTitle"
+              formControlName="title"
+            />
+          </div>
+
+          <!-- Input ISBN -->
+          <div class="mb-3">
+            <label for="inputIsbn" class="form-label">ISBN</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputIsbn"
+              formControlName="isbn"
+            />
+          </div>
+
+          <!-- Input Observations -->
+          <!-- <div class="mb-3">
+            <label for="inputObservations" class="form-label"
+              >Observations</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="inputObservations"
+              formControlName="observations"
+            />
+          </div> -->
+
+          <!-- Input Deadline -->
+          <!-- <div class="mb-3">
+            <label for="inputDeadline" class="form-label">Deadline</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputDeadline"
+              formControlName="deadline"
+            />
+          </div> -->
+
+          <!-- Input Returned -->
+          <!-- <div class="mb-3">
+            <label for="inputReturned" class="form-label disabled"
+              >Returned</label
+            >
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="inputReturned"
+              formControlName="returned"
+            />
+          </div> -->
+
+          <!-- Input user id -->
+          <div class="mb-3">
+            <label for="inputUserId" class="form-label">Usuario</label>
+            <input
+              type="string"
+              class="form-control"
+              id="inputUserId"
+              formControlName="user_id"
+            />
+          </div>
+
+          <!-- Input book id -->
+          <div class="mb-3">
+            <label for="inputBookId" class="form-label">Book</label>
+            <input
+              type="string"
+              class="form-control"
+              id="inputBookId"
+              formControlName="book_id"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-lg w-100 mt-1 mb-4 btn-primary">
+            Create
+          </button>
+
+          <a routerLink="/lend-book" class="d-block mb-4 mt-1 text-center"
+            >Go Back</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
