@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  menuItems = ['User', 'Book', 'Lend-Book', 'Lendbook-store', 'Lendbook-Show',];
+  menuItems = ['User', 'Tickets',];
   errors: any;
   user: any;
   show: any;

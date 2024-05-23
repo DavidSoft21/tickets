@@ -17,9 +17,10 @@ import { UserListComponent } from './components/pages/users/user-list/user-list.
 import { UserStoreComponent } from './components/pages/users/user-store/user-store.component';
 import { UserEditComponent } from './components/pages/users/user-edit/user-edit.component';
 import { TicketComponent } from './components/pages/tickets/ticket/ticket.component';
-// import { TicketEditComponent } from './components/pages/tickets/tickets-edit/ticket-edit.component';
-// import { TicketStoreComponent } from './components/pages/tickets/tickets-store/ticket-store.component';
-// import { TicketShowComponent } from './components/pages/tickets/tickets-show/ticket-show.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TicketEditComponent } from './components/pages/tickets/ticket-edit/ticket-edit.component';
+import { TicketStoreComponent } from './components/pages/tickets/ticket-store/ticket-store.component';
+import { TicketShowComponent } from './components/pages/tickets/ticket-show/ticket-show.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,16 @@ import { TicketComponent } from './components/pages/tickets/ticket/ticket.compon
     UserStoreComponent,
     UserEditComponent,
     TicketComponent,
+    TicketStoreComponent,
+    TicketEditComponent,
+    TicketShowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

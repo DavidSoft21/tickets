@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Ticket } from 'src/app/models/ticket.model';
 import { TicketService } from 'src/app/services/tickets/ticket.service';
 
+
 @Component({
   selector: 'app-ticket-store',
   templateUrl: './ticket-store.component.html',
@@ -24,15 +25,15 @@ export class TicketStoreComponent {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {
-  
     this.createForm = this.fb.group({
       title : [''],
       description: [''],
-      deadline: [''],
+      deadline: [new Date()],
       user_id : [''],
       status_id :[''],
     });
   }
+
 
   ngOnInit(): void {
     
@@ -58,6 +59,8 @@ export class TicketStoreComponent {
 
   createTicket() {
     this.cleanError();
+    console.log(this.createForm.value);
+    
     this.ticketService.store(this.createForm.value).subscribe(
       response => this.handleResponse(response),
       error => this.handleErrors(error)

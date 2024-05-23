@@ -14,7 +14,16 @@ export class TicketService {
 
   constructor(private http: HttpClient) { }
 
-  store(ticket: Ticket ): Observable<any> {
+  store(ticket: Ticket): Observable<any> {
+    let date = new Date(ticket.deadline);
+    let day = date.getDate();
+    let month = date.getMonth() + 1; 
+    let year = date.getFullYear();
+
+    if (day < 10) day = Number('0' + day.toString());
+    if (month < 10) month = Number('0' + month.toString());
+
+    ticket.deadline = `${day}-${month}-${year}`;
     return this.http.post(`${this.API_URL}/tickets/store`, ticket);
   };
 

@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LendBookService } from 'src/app/services/tickets/lend-book.service';
+import { TicketService } from 'src/app/services/tickets/ticket.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { LendBook } from 'src/app/models/lendbook.model';
+import { Ticket } from 'src/app/models/ticket.model';
 
 
 @Component({
-  selector: 'app-lendbook-user',
-  templateUrl: './lendbook-user.component.html',
-  styleUrls: ['./lendbook-user.component.css']
+  selector: 'app-ticket-user',
+  templateUrl: './ticket-user.component.html',
+  styleUrls: ['./ticket-user.component.css']
 })
-export class LendbookUserComponent {
+export class TicketUserComponent {
 
   lendbooks: any;
   errors: any;
 
   constructor(
-    private lendBookService: LendBookService,
+    private ticketService: TicketService,
     private router: Router,
     private fb: FormBuilder,
 
@@ -26,7 +26,7 @@ export class LendbookUserComponent {
   } 
 
   ngOnInit(): void {
-    this.lendBookService.showLendBookUsers().subscribe(
+    this.ticketService.showTicketUsers.subscribe(
       response => { this.lendbooks = response; }, 
       errors => this.handleErrors(errors),
     );
@@ -35,17 +35,17 @@ export class LendbookUserComponent {
 
   deleteLendBook(id: any, iControl: any): void {
     
-    let userResponse = confirm("¿Desea eliminar el registro?");
+    let userResponse = confirm("¿Desea eliminar el ticket?");
     if (userResponse) {
       this.cleanError();
       console.log(id);
       
-      this.lendBookService.delete(id).subscribe(
+      this.ticketService.delete(id).subscribe(
         response => this.handleResponse(response),
         errors => this.handleErrors(errors),
       );
     } else {
-      this.router.navigateByUrl('/lend-book');
+      this.router.navigateByUrl('/tickets');
     }
 
   }
@@ -58,7 +58,7 @@ export class LendbookUserComponent {
   private handleErrors(errors: any): void {
     alert('Unauthorizated or Was Ocurred An Error Internal');
     this.errors = errors.error.errors;
-    this.router.navigateByUrl('/lend-book');
+    this.router.navigateByUrl('/tickets');
   }
 
   private cleanError(): void {

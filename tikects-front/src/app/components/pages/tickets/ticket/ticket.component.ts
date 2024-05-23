@@ -29,6 +29,7 @@ export class TicketComponent {
   ngOnInit(): void {
     this.ticketService.index().subscribe(
       ({ Tickets }: any) => {
+        
         this.tickets = Tickets;
        }, 
       (errors: any) => this.handleErrors(errors),
@@ -41,8 +42,7 @@ export class TicketComponent {
     let userResponse = confirm("¿Desea eliminar el ticket?");
     if (userResponse) {
       this.cleanError();
-      console.log(id);
-      
+      //console.log(id);
       this.ticketService.delete(id).subscribe(
         (response: any)  => this.handleResponse(response),
         (errors: any) => this.handleErrors(errors),

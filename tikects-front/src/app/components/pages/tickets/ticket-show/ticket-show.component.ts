@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { LendBookService } from 'src/app/services/tickets/lend-book.service';
-import { LendBook } from '../../../../models/ticket.model';
+import { TicketService } from 'src/app/services/tickets/ticket.service';
+import { Ticket } from '../../../../models/ticket.model';
 
 @Component({
-  selector: 'app-lendbook-show',
-  templateUrl: './lendbook-show.component.html',
-  styleUrls: ['./lendbook-show.component.css']
+  selector: 'app-ticket-show',
+  templateUrl: './ticket-show.component.html',
+  styleUrls: ['./ticket-show.component.css']
 })
-export class LendbookShowComponent {
+export class TicketShowComponent {
 
   id:any;
   showForm: FormGroup;
-  lendBook: any = {};
+  ticket: any = {};
   data: any;
   errors: any;
   
 
   constructor(
-    private lendBookService: LendBookService,
+    private ticketService: TicketService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -51,7 +51,7 @@ export class LendbookShowComponent {
   showBook() {
     this.cleanError();
     const id = this.showForm.value.id;
-    this.lendBookService.show(id).subscribe(
+    this.ticketService.show(id).subscribe(
         response => this.handleResponse(response),
         error => this.handleErrors(error)
     );

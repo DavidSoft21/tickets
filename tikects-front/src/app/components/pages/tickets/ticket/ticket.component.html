@@ -13,6 +13,8 @@
             <th scope="col">ID</th>
             <th scope="col">TITLE</th>
             <th scope="col">DESCRIPTION</th>
+            <th scope="col">CREATED AT</th>
+            <th scope="col">UPDATED AT</th>
             <th scope="col">DEADLINE</th>
             <th scope="col">ACCIONES</th>
           </tr>
@@ -24,7 +26,9 @@
             <th scope="row">{{ ticket.id }}</th>
             <td>{{ ticket.title }}</td>
             <td>{{ ticket.description }}</td>
-            <td>{{ ticket.deadline }}</td>
+            <td>{{ ticket.created_at | date:'dd-MMMM-yyyy' }}</td>
+            <td>{{ ticket.updated_at | date:'dd-MMMM-yyyy' }}</td>
+            <td>{{ ticket.deadline | date:'dd-MMMM-yyyy' }}</td>
             <td>
               <div class="d-flex">
                 <a

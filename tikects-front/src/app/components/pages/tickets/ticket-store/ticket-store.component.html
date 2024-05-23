@@ -8,19 +8,11 @@
           {{ errors.title }}
         </div>
 
-        <div
-          *ngIf="errors?.user_id"
-          class="alert alert-danger"
-          role="alert"
-        >
+        <div *ngIf="errors?.user_id" class="alert alert-danger" role="alert">
           {{ errors.user_id }}
         </div>
 
-        <div
-          *ngIf="errors?.deadline"
-          class="alert alert-danger"
-          role="alert"
-        >
+        <div *ngIf="errors?.deadline" class="alert alert-danger" role="alert">
           {{ errors.deadline }}
         </div>
 
@@ -36,9 +28,7 @@
         <form [formGroup]="createForm" (ngSubmit)="createTicket()">
           <!-- Input Title -->
           <div class="mb-3">
-            <label for="inputTitle" class="form-label"
-              >Title</label
-            >
+            <label for="inputTitle" class="form-label">Title</label>
             <input
               type="text"
               class="form-control"
@@ -47,29 +37,27 @@
             />
           </div>
 
-          <!-- Input ISBN -->
+          <!-- Input Description -->
           <div class="mb-3">
-            <label for="inputIsbn" class="form-label">ISBN</label>
+            <label for="inputDescription" class="form-label">Description</label>
             <input
               type="text"
               class="form-control"
-              id="inputIsbn"
-              formControlName="isbn"
+              id="inputDescription"
+              formControlName="description"
             />
           </div>
 
-          <!-- Input Observations -->
-          <!-- <div class="mb-3">
-            <label for="inputObservations" class="form-label"
-              >Observations</label
-            >
+          <!-- Input deadline -->
+          <div class="mb-3">
+            <label for="inputDeadline" class="form-label">Deadline</label>
             <input
               type="text"
               class="form-control"
-              id="inputObservations"
-              formControlName="observations"
+              id="inputDeadline"
+              formControlName="deadline | date: 'yyyy-MM-dd'"
             />
-          </div> -->
+          </div>
 
           <!-- Input Deadline -->
           <!-- <div class="mb-3">
@@ -106,14 +94,14 @@
             />
           </div>
 
-          <!-- Input book id -->
+          <!-- Input status id -->
           <div class="mb-3">
-            <label for="inputBookId" class="form-label">Book</label>
+            <label for="inputStatusId" class="form-label">Status</label>
             <input
               type="string"
               class="form-control"
-              id="inputBookId"
-              formControlName="book_id"
+              id="inputStatusId"
+              formControlName="status_id"
             />
           </div>
 
@@ -121,7 +109,7 @@
             Create
           </button>
 
-          <a routerLink="/lend-book" class="d-block mb-4 mt-1 text-center"
+          <a routerLink="/tickets" class="d-block mb-4 mt-1 text-center"
             >Go Back</a
           >
         </form>
